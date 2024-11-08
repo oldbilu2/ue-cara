@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criar Portfólio</title>
+    <link rel="stylesheet" href="css/style.css"> <!-- Link para o CSS externo -->
+</head>
+<body>
+    <h1 class="titulo">Crie seu portfólio</h1>
+    <div class="form-container">
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" class="input-text" placeholder="Digite seu nome" />
+
+        <label for="descricao">Descrição:</label>
+        <textarea id="descricao" class="input-area" placeholder="Digite uma breve descrição"></textarea>
+
+        <label for="banner">URL do Banner:</label>
+        <input type="text" id="banner" class="input-text" placeholder="Cole o link do seu banner" />
+
+        <button id="atualizar" class="botao">Atualizar Pré-visualização</button>
+    </div>
+
+    <div class="preview-container">
+        <h2 id="preview-nome" class="preview-titulo">Seu nomezin vai aparecer aqui</h2>
+        <p id="preview-descricao" class="preview-descricao">Sua descrição aparecerá aqui.</p>
+        <!-- Inicialmente a imagem está oculta -->
+        <img id="preview-banner" class="preview-banner" src="" alt="Banner do Portfólio" style="display: none;">
+    </div>
+
+    <footer id="footer">
+        <div class="footer-content">
+            <img src="https://via.placeholder.com/50" alt="Ícone" class="footer-img">
+            <p class="footer-text">Feito por Bilu</p>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('atualizar').addEventListener('click', () => {
+            const nome = document.getElementById('nome').value;
+            const descricao = document.getElementById('descricao').value;
+            const bannerUrl = document.getElementById('banner').value;
+
+            document.getElementById('preview-nome').innerText = nome || 'Seu Nome Aqui';
+            document.getElementById('preview-descricao').innerText = descricao || 'Sua descrição aparecerá aqui.';
+            
+            const previewBanner = document.getElementById('preview-banner');
+            if (bannerUrl) {
+                previewBanner.src = bannerUrl;
+                previewBanner.style.display = 'block'; // Exibe a imagem
+            } else {
+                previewBanner.style.display = 'none'; // Esconde a imagem se não houver link
+            }
+        });
+    </script>
+</body>
+</html>
