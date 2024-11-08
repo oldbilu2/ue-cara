@@ -24,13 +24,13 @@
     <div class="preview-container">
         <h2 id="preview-nome" class="preview-titulo">Seu nomezin vai aparecer aqui</h2>
         <p id="preview-descricao" class="preview-descricao">Sua descrição aparecerá aqui.</p>
-        <img id="preview-banner" class="preview-banner" src="https://via.placeholder.com/500x200?text=Banner+de+Exemplo" alt="Banner do Portfólio">
+        <!-- Inicialmente a imagem está oculta -->
+        <img id="preview-banner" class="preview-banner" src="" alt="Banner do Portfólio" style="display: none;">
     </div>
 
-    <!-- Rodapé -->
     <footer id="footer">
         <div class="footer-content">
-            <img src="https://i.pinimg.com/originals/92/82/fc/9282fc0dbe01e651cdba3591c63b91be.gif" alt="Ícone" class="footer-img">
+            <img src="https://via.placeholder.com/50" alt="Ícone" class="footer-img">
             <p class="footer-text">Feito por Bilu</p>
         </div>
     </footer>
@@ -43,22 +43,15 @@
 
             document.getElementById('preview-nome').innerText = nome || 'Seu Nome Aqui';
             document.getElementById('preview-descricao').innerText = descricao || 'Sua descrição aparecerá aqui.';
-            document.getElementById('preview-banner').src = bannerUrl || 'https://via.placeholder.com/500x200?text=Banner+de+Exemplo';
-        });
-
-        // Exibir rodapé quando o usuário rolar para o final da página
-        window.onscroll = function() {
-            const footer = document.getElementById('footer');
-            const docHeight = document.documentElement.scrollHeight;
-            const windowHeight = window.innerHeight;
-            const scrollPosition = window.scrollY;
-
-            if (scrollPosition + windowHeight >= docHeight - 100) { // 100px antes de atingir o fim
-                footer.style.opacity = 1;
+            
+            const previewBanner = document.getElementById('preview-banner');
+            if (bannerUrl) {
+                previewBanner.src = bannerUrl;
+                previewBanner.style.display = 'block'; // Exibe a imagem
             } else {
-                footer.style.opacity = 0;
+                previewBanner.style.display = 'none'; // Esconde a imagem se não houver link
             }
-        };
+        });
     </script>
 </body>
 </html>
